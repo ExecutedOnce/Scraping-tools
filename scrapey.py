@@ -15,7 +15,8 @@ Current_Directory = os.getcwd()
 Save_Dir = os.environ['USERPROFILE'] + '/Desktop/Quarks_MP4s/'
 if not (os.path.exists(Save_Dir)):
     os.makedirs(Save_Dir)
-
+#if not os.path.exists(Current_Directory+"/SavedLinks.txt"):
+Open_File = open(Current_Directory+"/SavedLinks.txt", 'w')
 options = webdriver.ChromeOptions()
 PATH = Current_Directory+"/chromedriver.exe"
 prefs = {"download.default_directory" : os.environ['USERPROFILE'] + '\Desktop\Quarks_MP4s'} #(os.environ['USERPROFILE'] + '\Desktop'  #
