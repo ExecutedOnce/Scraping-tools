@@ -49,14 +49,16 @@ ElementsOnPage = (driver.find_elements(By.CLASS_NAME, "download"))
 def Main_Loop():
     ElementsOnPage = (driver.find_elements(By.CLASS_NAME, "download"))
     time.sleep(0.2)
+
     for i in ElementsOnPage:
+        i = i.get_attribute("href")
         if i not in Use_File('r').read():
-            raw_urls.append(i.get_attribute("href"))
+            raw_urls.append(i)
             time.sleep(0.2)
 
 
 while xyz < pages:
-    print(xyz)
+
     Main_Loop()
     time.sleep(3)
     if xyz < pages-1:
@@ -65,7 +67,8 @@ while xyz < pages:
     xyz+=1
 
 for i in raw_urls:
-    if i not in Use_File('r'):
+    print(i)
+    if i not in Use_File('r').read():
         Add_Entry(i)
         driver.get(i)
         time.sleep(1)
